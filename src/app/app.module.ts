@@ -30,6 +30,8 @@ import { HasRoleDirective } from './_directives/has-role.directive';
 import { UserMangementComponent } from './admin/user-mangement/user-mangement.component';
 import { PhotoMangementComponent } from './admin/photo-mangement/photo-mangement.component';
 import { RolesModalComponent } from './modals/roles-modal/roles-modal.component';
+import { RouteReuseStrategy } from '@angular/router';
+import { CustomRouteReuseStrategy } from './_services/customRouteReuseStrategy';
 // import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 
 
@@ -70,7 +72,8 @@ import { RolesModalComponent } from './modals/roles-modal/roles-modal.component'
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true},
+    {provide: RouteReuseStrategy, useClass: CustomRouteReuseStrategy}
   ],
   bootstrap: [AppComponent]
 })
